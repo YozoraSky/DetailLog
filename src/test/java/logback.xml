@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder默認配置為PartternLayoutEncoder -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="DETAILLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/opt/jboss/deploy/batch/detailLog/detailLog.%d{yyyyMMdd}.%i</FileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxFileSize>100MB</maxFileSize>
+			<totalSizeCap>100GB</totalSizeCap>
+			<maxHistory>365</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="detaillog" additivity="false" level="INFO">
+        <appender-ref ref="DETAILLOG"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
+    
+    <root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
