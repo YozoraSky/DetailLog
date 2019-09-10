@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class RunDetailLog implements CommandLineRunner{
 	@Autowired
 	private DetailLog detailLog;
-	
+    
 	public void run(String... args) throws ParseException {
 		String dateFromat = "((^((1[8-9]\\d{2})|([2-9]\\d{3}))([-\\/\\._])(10|12|0?[13578])([-\\/\\._])"
 				+ "(3[01]|[12][0-9]|0?[1-9])$)|(^((1[8-9]\\d{2})|([2-9]\\d{3}))([-\\/\\._])"
