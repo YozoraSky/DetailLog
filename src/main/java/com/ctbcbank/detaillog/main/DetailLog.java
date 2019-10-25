@@ -59,6 +59,7 @@ public class DetailLog {
 			//每個資料的處理
 			List<String> sqlArray = new ArrayList<String>();
 			long time = System.currentTimeMillis();
+//			依照檔案數目(NumFile)，依序執行
 			for(int i = 0;i <= (NumFile-1); i++) {
 				perLogSqlCount = 0;
 				String readFileName = logDate.replace("-", "") + "." + i + ".txt";
@@ -181,6 +182,7 @@ public class DetailLog {
 		return status;
 	}
 	
+//	無日期參數。抓前一天的時間
 	public Boolean insert() {
 		//抓前一天(一天有86400000毫秒)
 		long time = System.currentTimeMillis()-86400000;
@@ -189,6 +191,7 @@ public class DetailLog {
 		return execute(sdf.format(now));
 	}
 	
+//	抓指定日期的時間
 	public Boolean insert(String date) {
 		return execute(date);
 	}
